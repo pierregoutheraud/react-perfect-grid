@@ -65,7 +65,8 @@ module.exports.getConfig = function(type, port) {
         {
           test: /\.jsx?$/,
           include: [
-            path.join(__dirname, 'app/scripts')
+            path.join(__dirname, 'app/scripts'),
+            path.join(__dirname, 'example')
           ],
           loaders: ['babel-loader']
         }
@@ -113,7 +114,7 @@ module.exports.getConfig = function(type, port) {
       'webpack-dev-server/client?http://localhost:'+port, // WebpackDevServer host and port
       'webpack/hot/only-dev-server',
       // "webpack/hot/dev-server",
-      "./app/scripts/App.jsx"
+      "./example/App.jsx"
     ];
 
     config.plugins.push(

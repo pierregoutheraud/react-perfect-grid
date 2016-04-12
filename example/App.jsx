@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import GridImages from './GridImages.jsx'
+import PerfectGrid from '../build/react-perfect-grid.js'
 import $ from 'jquery'
 
 function fetchTumblr (tumblr) {
@@ -42,8 +42,8 @@ function fetchSubreddit (url) {
 }
 
 let url = ''
-// url = 'oxane.tumblr.com'
-url = 'regarderlesfilles.tumblr.com'
+url = 'oxane.tumblr.com'
+// url = 'regarderlesfilles.tumblr.com'
 // url = 'cinqfruits.tumblr.com'
 // url = 'https://www.reddit.com/r/NSFW_GIF/top.json?sort=top&limit=100&t=day&count=0'
 // fetchSubreddit(url).then((images) => {
@@ -55,7 +55,7 @@ fetchTumblr(url).then((images) => {
   // images.forEach((src, i) => { console.log(i, src) })
 
   ReactDOM.render(
-    <GridImages
+    <PerfectGrid
       images={images}
       maxHeight={$(window).height() * .7}
       margins={0}

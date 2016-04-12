@@ -23,8 +23,6 @@ var isProduction = environment === 'prod';
 var port = gulpUtil.env.port || 9999;
 var app = 'app/';
 var build = 'build/';
-var server = 'server/';
-var public = 'public/';
 
 // copy images
 gulp.task('images', function(cb) {
@@ -38,7 +36,7 @@ gulp.task("webpack-dev-server", function(callback) {
     var compiler = webpack(webpackConfigDev);
 
     new WebpackDevServer(compiler, {
-      contentBase: 'public/', // where index.html is
+      contentBase: 'example/', // where index.html is
       publicPath: '/js/', // js bundle path
       historyApiFallback: true,
       hot: true

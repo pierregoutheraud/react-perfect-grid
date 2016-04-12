@@ -1,0 +1,28 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+
+  display: flex;
+  flex: 1;
+  max-width: 100%;
+  //overflow: hidden;
+}
+
+.app {
+  display: flex;
+  flex: 1;
+  max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

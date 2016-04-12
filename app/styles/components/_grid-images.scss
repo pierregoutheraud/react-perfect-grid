@@ -1,0 +1,30 @@
+.grid-images {
+
+  display: flex;
+  flex: 1;
+  max-width: 100%;
+  //flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  &__rows {
+    display: flex;
+  }
+
+  &__row {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
+  &__image {
+    display: flex;
+    //justify-content: center;
+
+    img {
+      display: block;
+      height: 100%;
+      //align-self: center;
+    }
+  }
+
+}

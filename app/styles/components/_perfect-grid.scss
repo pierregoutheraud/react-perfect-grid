@@ -1,0 +1,49 @@
+.perfect-grid {
+
+  display: flex;
+  flex: 1;
+  max-width: 100%;
+  //flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  &__rows {
+    display: flex;
+  }
+
+  &__row {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
+  &__over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  &__media {
+    width: 100%;
+    height: 100%;
+    img, video {
+      display: block;
+      height: 100%;
+      // width: auto !important;
+      //align-self: center;
+      position: relative;
+      z-index: 1;
+      background-color: black;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    //justify-content: center;
+  }
+
+}

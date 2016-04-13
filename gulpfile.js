@@ -53,7 +53,7 @@ gulp.task("webpack-dev-server", function(callback) {
 gulp.task('scripts', function(cb) {
 
   var webpackConfig = require('./webpack.config.js').getConfig('prod', port);
-  return gulp.src("./app/scripts/DmChat.jsx")
+  return gulp.src("./app/scripts/PerfectGrid.jsx")
     .pipe(webpackStream(webpackConfig))
     // .pipe($.uglify())
     .pipe(gulpSize({ title : 'js' }))

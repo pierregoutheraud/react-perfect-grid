@@ -1,6 +1,9 @@
+import './example.scss'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PerfectGrid from '../build/react-perfect-grid.js'
+// import PerfectGrid from '../build/react-perfect-grid.js'
+import PerfectGrid from '../app/scripts/PerfectGrid.jsx'
 import $ from 'jquery'
 
 function fetchTumblr (tumblr) {
@@ -27,38 +30,38 @@ function fetchTumblr (tumblr) {
 
 }
 
-function fetchSubreddit (url) {
-  return $.getJSON(url).then((res) => {
-
-    let images = res.data.children
-
-    images = images.map((image) => {
-      console.log(image.data.url);
-      return image.data.url
-    })
-
-    return images
-  })
-}
-
 let url = ''
 url = 'oxane.tumblr.com'
 // url = 'regarderlesfilles.tumblr.com'
-// url = 'cinqfruits.tumblr.com'
-// url = 'https://www.reddit.com/r/pics/top.json?sort=top&limit=100&t=day&count=0'
-// fetchSubreddit(url).then((images) => {
 fetchTumblr(url).then((images) => {
 
-  console.log(images);
+  // console.log(images);
   // images.forEach((src, i) => { console.log(i, src) })
+  // images.unshift('https://i.imgur.com/3YAehPK.gifv')
+  images.unshift('http://i.imgur.com/3YAehPK.webm')
+
+  let items = images.map((url, i) => {
+    let over = (
+      <div className={"over over"+i}>
+        <h2>Title {i}</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    )
+    return {
+      url,
+      over,   // optional
+      // width: 300, // optional
+      // height: 400
+    }
+  })
 
   ReactDOM.render(
     <PerfectGrid
-      images={images}
+      items={items}
       maxHeight={$(window).height() * .7}
-      margins={10}
+      margins={0}
       order={true}
-    ><PerfectGrid />
+    />
     ,document.querySelector('.app')
   )
 

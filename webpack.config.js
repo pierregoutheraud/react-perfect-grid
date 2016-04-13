@@ -53,7 +53,8 @@ module.exports.getConfig = function(type, port) {
         {
           test: /\.scss$/,
           include: [
-            path.join(__dirname, 'app/styles')
+            path.join(__dirname, 'app/styles'),
+            path.join(__dirname, 'example')
           ],
           loader: 'style-loader!css-loader!postcss-loader!sass-loader'
         },
@@ -80,7 +81,7 @@ module.exports.getConfig = function(type, port) {
   if (type === 'prod') {
 
     config.entry.app = [
-      "./app/scripts/GridImages.jsx"
+      "./app/scripts/PerfectGrid.jsx"
     ]
 
     config.plugins.push(
@@ -114,7 +115,7 @@ module.exports.getConfig = function(type, port) {
       'webpack-dev-server/client?http://localhost:'+port, // WebpackDevServer host and port
       'webpack/hot/only-dev-server',
       // "webpack/hot/dev-server",
-      "./example/App.jsx"
+      "./example/example.jsx"
     ];
 
     config.plugins.push(

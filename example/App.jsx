@@ -45,23 +45,21 @@ let url = ''
 url = 'oxane.tumblr.com'
 // url = 'regarderlesfilles.tumblr.com'
 // url = 'cinqfruits.tumblr.com'
-// url = 'https://www.reddit.com/r/NSFW_GIF/top.json?sort=top&limit=100&t=day&count=0'
+// url = 'https://www.reddit.com/r/pics/top.json?sort=top&limit=100&t=day&count=0'
 // fetchSubreddit(url).then((images) => {
 fetchTumblr(url).then((images) => {
 
   console.log(images);
-
-  //console.log('fetch tumblr')
   // images.forEach((src, i) => { console.log(i, src) })
 
   ReactDOM.render(
     <PerfectGrid
       images={images}
       maxHeight={$(window).height() * .7}
-      margins={0}
-      order={false}
-    />,
-    document.querySelector('.app')
+      margins={10}
+      order={true}
+    ><PerfectGrid />
+    ,document.querySelector('.app')
   )
 
 })

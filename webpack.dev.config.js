@@ -8,11 +8,16 @@ module.exports.getConfig = function(port) {
 
   var config = {
     entry: {
-      app: []
+      app: [
+        'webpack-dev-server/client?http://localhost:'+port, // WebpackDevServer host and port
+        'webpack/hot/only-dev-server',
+        // "webpack/hot/dev-server",
+        "./public/App.jsx"
+      ]
     },
     output: {
-      filename: 'react-perfect-grid.js',
-      path: path.join(__dirname + '/build'),
+      filename: 'website.js',
+      path: path.join(__dirname),
       // publicPath: '/js/',
       libraryTarget: 'umd',
       library: 'ReactPerfectGrid'
@@ -20,10 +25,28 @@ module.exports.getConfig = function(port) {
     resolve: {
       modulesDirectories: [
         path.join(__dirname + '/app/scripts/'),
+        // path.join(__dirname + '/app/styles/'),
         'node_modules'
       ],
+      // alias:{
+      //   "matches-selector/matches-selector": "desandro-matches-selector",
+      //   "eventEmitter/EventEmitter": "wolfy87-eventemitter",
+      //   "get-style-property/get-style-property": "desandro-get-style-property"
+      // }
+      // extensions: ['', '.js', '.jsx']
+
+      // root: __dirname + '/app/scripts',
+      // alias: {
+      //   jquery: 'jquery/dist/jquery.min.js'
+      // },
+      // fallback: path.join(__dirname, 'node_modules')
     },
-    plugins: [],
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
+    ],
+    debug : true,
+    devtool: 'eval',
     module: {
       loaders: [
         {
@@ -49,7 +72,7 @@ module.exports.getConfig = function(port) {
             path.join(__dirname, 'app/scripts'),
             path.join(__dirname, 'public')
           ],
-          loaders: ['babel-loader']
+          loaders: ['react-hot','babel-loader']
         }
       ]
     },
@@ -57,33 +80,6 @@ module.exports.getConfig = function(port) {
       return [autoprefixer];
     },
   };
-
-  config.entry.app = [
-    "./app/scripts/PerfectGrid.jsx"
-  ]
-
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-          warnings: false
-      }
-    })
-  )
-
-  config.externals = {
-    'react': {
-      'root': 'React',
-      'commonjs': 'react',
-      'commonjs2': 'react',
-      'amd': 'react'
-    },
-    'react-dom': {
-      'root': 'ReactDOM',
-      'commonjs': 'react-dom',
-      'commonjs2': 'react-dom',
-      'amd': 'react-dom'
-    }
-  }
 
   return config;
 }

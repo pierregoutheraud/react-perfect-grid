@@ -32,12 +32,14 @@ gulp.task('images', function(cb) {
 });
 
 gulp.task("webpack-dev-server", function(callback) {
-    var webpackConfigDev = require('./webpack.config.js').getConfig('dev', port);
-    var compiler = webpack(webpackConfigDev);
+    var webpackConfig = require('./webpack.dev.config.js').getConfig(port)
+    var compiler = webpack(webpackConfig);
+
+
 
     new WebpackDevServer(compiler, {
       // contentBase: '/', // where index.html is
-      publicPath: '/public/js/', // js bundle path
+      // publicPath: '/public/js/', // js bundle path
       historyApiFallback: true,
       hot: true
     }).listen(port, "localhost", function(err) {
@@ -50,6 +52,13 @@ gulp.task("webpack-dev-server", function(callback) {
 
 });
 
+gulp.task('website', function(cb) {
+  var webpackConfig = require('./webpack.dev.config.js').getConfig(port)
+  return gulp.src('./public/App.jsx')
+          .pipe(webpackStream(webpackConfig))
+          .pipe(gulp.dest('./'));
+})
+
 gulp.task('scripts', function(cb) {
 
   var webpackConfig = require('./webpack.config.js').getConfig('prod', port);
@@ -58,17 +67,6 @@ gulp.task('scripts', function(cb) {
     // .pipe($.uglify())
     .pipe(gulpSize({ title : 'js' }))
     .pipe(gulp.dest(build));
-
-})
-
-gulp.task('website', function(cb) {
-
-  var webpackConfig = require('./webpack.config.js').getConfig('website', port);
-  return gulp.src("./public/App.jsx")
-    .pipe(webpackStream(webpackConfig))
-    // .pipe($.uglify())
-    .pipe(gulpSize({ title : 'js' }))
-    .pipe(gulp.dest('public/js/'));
 
 })
 

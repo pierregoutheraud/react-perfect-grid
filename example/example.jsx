@@ -6,11 +6,15 @@ import ReactDOM from 'react-dom'
 import PerfectGrid from '../app/scripts/PerfectGrid.jsx'
 import $ from 'jquery'
 
-function fetchTumblr (tumblr) {
+import GistEmbed from './GistEmbed.jsx'
+
+function fetchTumblr (tumblr, page=1) {
+
+  let limit = 100
 
   let url = `https://api.tumblr.com/v2/blog/${tumblr}/posts/photo`
   url += `?api_key=rG749jGun3EYRBaiV9outPocSgFpXCblfXgakmGCo14yuGwAu7`;
-  url += `&limit=100&offset=0`;
+  url += `&limit=${limit}&offset=${(page-1)*limit}`;
   url += `&callback=?`;
 
   return $.getJSON(url).then((res) => {
@@ -35,7 +39,27 @@ url = 'oxane.tumblr.com'
 // url = 'nicolasbessol.tumblr.com'
 // url = 'without-coriander-please.tumblr.com'
 // url = 'regarderlesfilles.tumblr.com'
-fetchTumblr(url).then((images) => {
+
+// function nextPage({images,page, url}) {
+  // page++
+  // return fetchTumblr(url, page).then(({imagesNext, pageNext}) => {
+    // console.log(imagesNext, pageNext);
+    // return {images: images.concat(imagesNext), page: pageNext}
+  // })
+// }
+
+let ps = []
+for (let i=1;i<=5;i++) {
+  ps.push(fetchTumblr(url,i))
+}
+
+Promise.all(ps).then((array) => {
+
+  let images = []
+
+  array.forEach((i) => {
+    images = images.concat(i)
+  })
 
   console.debug(images.length + ' images fetched from ' + url);
 
@@ -63,9 +87,9 @@ fetchTumblr(url).then((images) => {
   items[2].width = 300
   items[2].height = 300
 
-  ReactDOM.render(
-    <Example items={items} />
-    ,document.querySelector('.app')
+  ReactDOM.render (
+    <Example items={items} />,
+    document.querySelector('.app')
   )
 
 })
@@ -75,7 +99,7 @@ class Example extends React.Component {
     super()
     this.state = {
       margins: 0,
-      maxHeight: $(window).height() * .7
+      maxHeight: Math.floor($(window).height() * .7)
     }
   }
 
@@ -95,15 +119,32 @@ class Example extends React.Component {
 
     return (
       <div className="example">
+        <div className="example__title">
+          <h1>React Perfect Grid</h1>
+          <p>React Component for same height items grid (Flickr like)</p>
+          <div className="example__links">
+            <a href="https://github.com/pierregoutheraud/react-perfect-grid" target="_blank">Github</a>
+            <iframe src="https://ghbtns.com/github-btn.html?user=pierregoutheraud&repo=react-perfect-grid&type=star&count=true" frameBorder="0" scrolling="0" width="100px" height="20px"></iframe>
+          </div>
+        </div>
+
+        <div className="example__usage">
+          <h2>Usage</h2>
+          <GistEmbed gist="7f7136927595d34e17ab5faef4689dfc" />
+        </div>
+
         <div className="example__settings">
-          <fieldset>
-            <input type="range" ref="inputMargins" onChange={::this.onChangeMargins} defaultValue="0" min="0" max="300" step="1" />
-            <p>Margins: { margins }</p>
-          </fieldset>
-          <fieldset>
-            <input type="range" ref="inputMaxHeight" onChange={::this.onChangeMaxHeight} defaultValue={maxHeight} min="0" max="1000" step="1" />
-            <p>Max height: { maxHeight }</p>
-          </fieldset>
+          <h2>Demo</h2>
+          <form>
+            <fieldset>
+              <input type="range" ref="inputMargins" onChange={::this.onChangeMargins} defaultValue={margins} min="0" max="300" step="1" />
+              <p>Margins: <span>{ margins }</span></p>
+            </fieldset>
+            <fieldset>
+              <input type="range" ref="inputMaxHeight" onChange={::this.onChangeMaxHeight} defaultValue={maxHeight} min="0" max="1200" step="1" />
+              <p>Row height: <span>{ maxHeight }</span></p>
+            </fieldset>
+          </form>
         </div>
         <PerfectGrid
           items={this.props.items}

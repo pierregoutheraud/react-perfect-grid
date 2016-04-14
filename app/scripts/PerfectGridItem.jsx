@@ -1,10 +1,15 @@
 import React from 'react'
 
 class PerfectGridItem extends React.Component {
+
   constructor () {
     super()
     this.state = {
     }
+  }
+
+  onClick (e) {
+    window.open(this.props.link)
   }
 
   render () {
@@ -16,8 +21,8 @@ class PerfectGridItem extends React.Component {
     let width = H*ratio
 
     let style = {
-      height: height + 'px',
-      width: width + 'px',
+      height: Math.floor(height) + 'px',
+      width: Math.floor(width) + 'px',
       margin: margins/2 + 'px'
     }
 
@@ -27,8 +32,10 @@ class PerfectGridItem extends React.Component {
       media = <video src={src} controls />
     }
 
+    let onClick = this.props.link ? ::this.onClick : null
+
     return (
-      <div className="perfect-grid__item" style={style}>
+      <div onClick={onClick} className="perfect-grid__item" style={style}>
         { over ? <div className="perfect-grid__over" >{ over }</div> : null }
         <div className="perfect-grid__media" >
           { media }

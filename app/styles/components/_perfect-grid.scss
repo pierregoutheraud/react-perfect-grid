@@ -1,5 +1,10 @@
 .perfect-grid {
 
+  box-sizing: border-box;
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
   display: flex;
   flex: 1;
   max-width: 100%;
@@ -31,8 +36,6 @@
     img, video {
       display: block;
       height: 100%;
-      // width: auto !important;
-      //align-self: center;
       position: relative;
       z-index: 1;
       background-color: black;

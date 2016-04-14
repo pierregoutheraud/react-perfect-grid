@@ -40,6 +40,7 @@ class PerfectGrid extends React.Component {
 
   setContainerWidth () {
     let W = this.refs.perfectGrid.offsetWidth
+    console.log('W', W);
     this.setState({ W })
   }
 
@@ -84,19 +85,29 @@ class PerfectGrid extends React.Component {
     item.type = 'image'
     return new Promise((resolve, reject) => {
 
+      // console.log('loadImage', item);
+      let image = new Image()
+
       // If width and height already given
       if (item.width && item.height) {
+
+        image.src = item.url
+        item.media = image
         resolve({ item, i })
+
+      } else {
+
+        image.onload = (e) => {
+          item.width = image.width
+          item.height = image.height
+          resolve({item, i})
+        }
+        image.src = item.url
+        item.media = image
+
       }
 
-      let image = new Image()
-      image.onload = (e) => {
-        item.width = image.width
-        item.height = image.height
-        resolve({item, i})
-      }
-      image.src = item.url
-      item.media = image
+
 
     })
   }

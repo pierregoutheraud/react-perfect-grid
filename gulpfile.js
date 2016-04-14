@@ -36,8 +36,8 @@ gulp.task("webpack-dev-server", function(callback) {
     var compiler = webpack(webpackConfigDev);
 
     new WebpackDevServer(compiler, {
-      contentBase: 'example/', // where index.html is
-      publicPath: '/js/', // js bundle path
+      // contentBase: '/', // where index.html is
+      publicPath: '/public/js/', // js bundle path
       historyApiFallback: true,
       hot: true
     }).listen(port, "localhost", function(err) {
@@ -59,7 +59,18 @@ gulp.task('scripts', function(cb) {
     .pipe(gulpSize({ title : 'js' }))
     .pipe(gulp.dest(build));
 
-});
+})
+
+gulp.task('website', function(cb) {
+
+  var webpackConfig = require('./webpack.config.js').getConfig('website', port);
+  return gulp.src("./public/App.jsx")
+    .pipe(webpackStream(webpackConfig))
+    // .pipe($.uglify())
+    .pipe(gulpSize({ title : 'js' }))
+    .pipe(gulp.dest('public/js/'));
+
+})
 
 gulp.task('serve', function() {
   gulpConnect.server({

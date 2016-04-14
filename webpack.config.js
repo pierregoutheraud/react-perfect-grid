@@ -13,7 +13,7 @@ module.exports.getConfig = function(type, port) {
     output: {
       filename: 'react-perfect-grid.js',
       path: path.join(__dirname + '/build'),
-      publicPath: '/js/',
+      // publicPath: '/js/',
       libraryTarget: 'umd',
       library: 'ReactPerfectGrid'
     },
@@ -54,7 +54,7 @@ module.exports.getConfig = function(type, port) {
           test: /\.scss$/,
           include: [
             path.join(__dirname, 'app/styles'),
-            path.join(__dirname, 'example')
+            path.join(__dirname, 'public')
           ],
           loader: 'style-loader!css-loader!postcss-loader!sass-loader'
         },
@@ -67,7 +67,7 @@ module.exports.getConfig = function(type, port) {
           test: /\.jsx?$/,
           include: [
             path.join(__dirname, 'app/scripts'),
-            path.join(__dirname, 'example')
+            path.join(__dirname, 'public')
           ],
           loaders: ['babel-loader']
         }
@@ -107,6 +107,12 @@ module.exports.getConfig = function(type, port) {
       }
     }
 
+  } else if (type === 'website') {
+
+    config.entry.app = [
+      "./public/App.jsx"
+    ]
+
   } else if (type === 'dev') {
 
     config.devtool = 'eval';
@@ -115,7 +121,7 @@ module.exports.getConfig = function(type, port) {
       'webpack-dev-server/client?http://localhost:'+port, // WebpackDevServer host and port
       'webpack/hot/only-dev-server',
       // "webpack/hot/dev-server",
-      "./example/example.jsx"
+      "./public/App.jsx"
     ];
 
     config.plugins.push(

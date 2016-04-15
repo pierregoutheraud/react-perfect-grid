@@ -3,6 +3,7 @@
 React Component for same height items grid (flickr like) :
 <a href="http://pierregoutheraud.github.io/react-perfect-grid" target="_blank" >demo</a>
 
+![demo react perfect grid](http://i.imgur.com/qj2AfEA.png "demo react perfect grid")
 ![demo react perfect grid](https://dl.dropboxusercontent.com/u/3461688/react-perfect-grid-demo.gif "demo react perfect grid")
 
 ### Install

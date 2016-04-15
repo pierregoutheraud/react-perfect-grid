@@ -23,6 +23,7 @@ var isProduction = environment === 'prod';
 var port = gulpUtil.env.port || 9999;
 var app = 'app/';
 var build = 'build/';
+var public = 'public/'
 
 // copy images
 gulp.task('images', function(cb) {

@@ -44,7 +44,6 @@ class PerfectGrid extends React.Component {
   }
 
   componentWillMount () {
-
     let promises = this.props.items.map((item, i) => {
       return this.loadItem(item, i)
                  .then(::this.addMedia)
@@ -54,7 +53,6 @@ class PerfectGrid extends React.Component {
     Promise.all(promises).then((images) => {
       // console.debug('All images loaded!')
     })
-
   }
 
   loadItem (item, i) {
@@ -88,13 +86,10 @@ class PerfectGrid extends React.Component {
 
       // If width and height already given
       if (item.width && item.height) {
-
         image.src = item.url
         item.media = image
         resolve({ item, i })
-
       } else {
-
         image.onload = (e) => {
           item.width = image.width
           item.height = image.height
@@ -102,11 +97,7 @@ class PerfectGrid extends React.Component {
         }
         image.src = item.url
         item.media = image
-
       }
-
-
-
     })
   }
 

@@ -118,7 +118,7 @@ class Example extends React.Component {
     let { margins, maxHeight } = this.state
     const { items } = this.props
 
-    const itemsHeader = items.slice(0,50)
+    const itemsHeader = items.slice(0,40)
 
     return (
       <div className="example">
@@ -133,7 +133,7 @@ class Example extends React.Component {
           </div>
           <PerfectGrid
             items={itemsHeader}
-            maxHeight={170}
+            maxHeight={200}
             order={false}
           />
         </div>
@@ -151,7 +151,7 @@ class Example extends React.Component {
               <p>Margins: <span>{ margins }</span></p>
             </fieldset>
             <fieldset>
-              <input type="range" ref="inputMaxHeight" onChange={::this.onChangeMaxHeight} defaultValue={maxHeight} min="0" max="1200" step="1" />
+              <input type="range" ref="inputMaxHeight" onChange={::this.onChangeMaxHeight} defaultValue={maxHeight} min="20" max="1200" step="1" />
               <p>Row height: <span>{ maxHeight }</span></p>
             </fieldset>
           </form>

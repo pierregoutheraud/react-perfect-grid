@@ -1,7 +1,7 @@
 # react-perfect-grid
 
 React Component for same height items grid (flickr like) :
-[demo](pierregoutheraud.github.io/react-perfect-grid)
+[demo](http://pierregoutheraud.github.io/react-perfect-grid)
 
 ### Usage
 

@@ -27,9 +27,7 @@ module.exports.getConfig = function(port) {
     },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
+        compress: { warnings: false }
       })
     ],
     module: {

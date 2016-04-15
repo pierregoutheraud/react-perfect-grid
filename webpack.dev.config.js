@@ -30,7 +30,10 @@ module.exports.getConfig = function(port) {
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.NoErrorsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false }
+      })
     ],
     debug : true,
     devtool: 'eval',

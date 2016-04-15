@@ -12,6 +12,9 @@ npm install react-perfect-grid --save
 ### Usage
 
 ```javascript
+
+import PerfectGrid from 'react-perfect-grid'
+
 let items = [
   { url: 'http://www.website.com/image1.jpg' },
   { url: 'http://www.website.com/image2.jpg' },

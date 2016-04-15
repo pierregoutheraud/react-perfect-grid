@@ -25,21 +25,8 @@ module.exports.getConfig = function(port) {
     resolve: {
       modulesDirectories: [
         path.join(__dirname + '/app/scripts/'),
-        // path.join(__dirname + '/app/styles/'),
         'node_modules'
       ],
-      // alias:{
-      //   "matches-selector/matches-selector": "desandro-matches-selector",
-      //   "eventEmitter/EventEmitter": "wolfy87-eventemitter",
-      //   "get-style-property/get-style-property": "desandro-get-style-property"
-      // }
-      // extensions: ['', '.js', '.jsx']
-
-      // root: __dirname + '/app/scripts',
-      // alias: {
-      //   jquery: 'jquery/dist/jquery.min.js'
-      // },
-      // fallback: path.join(__dirname, 'node_modules')
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),

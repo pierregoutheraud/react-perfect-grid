@@ -21,8 +21,8 @@ class PerfectGridItem extends React.Component {
     let width = H*ratio
 
     let style = {
-      height: Math.floor(height) + 'px',
-      width: Math.floor(width) + 'px',
+      height: height + 'px',
+      width: width + 'px',
       margin: margins/2 + 'px'
     }
 

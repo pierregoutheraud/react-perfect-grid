@@ -116,16 +116,26 @@ class Example extends React.Component {
   render () {
 
     let { margins, maxHeight } = this.state
+    const { items } = this.props
+
+    const itemsHeader = items.slice(0,50)
 
     return (
       <div className="example">
         <div className="example__title">
-          <h1>React Perfect Grid</h1>
-          <p>React Component for same height items grid (Flickr like)</p>
-          <div className="example__links">
-            <a href="https://github.com/pierregoutheraud/react-perfect-grid" target="_blank">Github</a>
-            <iframe src="https://ghbtns.com/github-btn.html?user=pierregoutheraud&repo=react-perfect-grid&type=star&count=true" frameBorder="0" scrolling="0" width="100px" height="20px"></iframe>
+          <div className="example__title__content">
+            <h1>React Perfect Grid</h1>
+            <p>React Component for same height items grid (Flickr like)</p>
+            <div className="example__links">
+              <a href="https://github.com/pierregoutheraud/react-perfect-grid" target="_blank">Github</a>
+              <iframe src="https://ghbtns.com/github-btn.html?user=pierregoutheraud&repo=react-perfect-grid&type=star&count=true" frameBorder="0" scrolling="0" width="100px" height="20px"></iframe>
+            </div>
           </div>
+          <PerfectGrid
+            items={itemsHeader}
+            maxHeight={170}
+            order={false}
+          />
         </div>
 
         <div className="example__usage">
@@ -147,7 +157,7 @@ class Example extends React.Component {
           </form>
         </div>
         <PerfectGrid
-          items={this.props.items}
+          items={items}
           maxHeight={maxHeight}
           margins={margins}
           order={true}

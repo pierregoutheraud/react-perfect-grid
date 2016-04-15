@@ -46,18 +46,36 @@ h2 {
   flex-direction: column;
 
   &__title {
+
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex: 1;
     flex-direction: column;
-
     text-align: center;
-    padding: 100px 0;
+    padding: 200px 0;
     // background-color: rgba(0,0,0,.03);
     background-color: #E74C3C;
     color: white;
+
+    &__content {
+      position: relative;
+      z-index: 2;
+    }
+
     h1 {
       font-size: 60px;
       margin-bottom: 10px;
+    }
+
+    .perfect-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      opacity: .1;
     }
   }
 

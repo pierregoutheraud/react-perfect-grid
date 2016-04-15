@@ -8,7 +8,9 @@ module.exports.getConfig = function(port) {
 
   var config = {
     entry: {
-      app: []
+      app: [
+        "./app/scripts/PerfectGrid.jsx"
+      ]
     },
     output: {
       filename: 'react-perfect-grid.js',
@@ -23,7 +25,13 @@ module.exports.getConfig = function(port) {
         'node_modules'
       ],
     },
-    plugins: [],
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+      })
+    ],
     module: {
       loaders: [
         {
@@ -56,34 +64,21 @@ module.exports.getConfig = function(port) {
     postcss: function () {
       return [autoprefixer];
     },
-  };
-
-  config.entry.app = [
-    "./app/scripts/PerfectGrid.jsx"
-  ]
-
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-          warnings: false
+    externals: {
+      'react': {
+        'root': 'React',
+        'commonjs': 'react',
+        'commonjs2': 'react',
+        'amd': 'react'
+      },
+      'react-dom': {
+        'root': 'ReactDOM',
+        'commonjs': 'react-dom',
+        'commonjs2': 'react-dom',
+        'amd': 'react-dom'
       }
-    })
-  )
-
-  config.externals = {
-    'react': {
-      'root': 'React',
-      'commonjs': 'react',
-      'commonjs2': 'react',
-      'amd': 'react'
-    },
-    'react-dom': {
-      'root': 'ReactDOM',
-      'commonjs': 'react-dom',
-      'commonjs2': 'react-dom',
-      'amd': 'react-dom'
     }
-  }
+  };
 
   return config;
 }

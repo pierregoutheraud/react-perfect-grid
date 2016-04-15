@@ -127,7 +127,8 @@ class Example extends React.Component {
             <h1>React Perfect Grid</h1>
             <p>React Component for same height items grid (flickr like)</p>
             <div className="example__links">
-              <a href="https://github.com/pierregoutheraud/react-perfect-grid" target="_blank">Github</a>
+              <a href="https://www.npmjs.com/package/react-perfect-grid" target="_blank">npm</a>
+              <a href="https://github.com/pierregoutheraud/react-perfect-grid" target="_blank">github</a>
               <iframe src="https://ghbtns.com/github-btn.html?user=pierregoutheraud&repo=react-perfect-grid&type=star&count=true" frameBorder="0" scrolling="0" width="100px" height="20px"></iframe>
             </div>
           </div>

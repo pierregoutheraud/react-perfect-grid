@@ -3,14 +3,15 @@
 React Component for same height items grid (flickr like) :
 <a href="http://pierregoutheraud.github.io/react-perfect-grid" target="_blank" >demo</a>
 
+### Install
+
+```
+npm install react-perfect-grid --save
+```
+
 ### Usage
 
 ```javascript
-
-// npm install react-perfect-grid --save
-
-import PerfectGrid from 'react-perfect-grid'
-
 let items = [
   { url: 'http://www.website.com/image1.jpg' },
   { url: 'http://www.website.com/image2.jpg' },

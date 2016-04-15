@@ -49,7 +49,7 @@ url = 'oxane.tumblr.com'
 // }
 
 let ps = []
-for (let i=1;i<=5;i++) {
+for (let i=1;i<=3;i++) {
   ps.push(fetchTumblr(url,i))
 }
 
@@ -133,7 +133,7 @@ class Example extends React.Component {
           </div>
           <PerfectGrid
             items={itemsHeader}
-            maxHeight={200}
+            maxHeight={220}
             order={false}
           />
         </div>

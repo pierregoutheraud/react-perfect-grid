@@ -87,6 +87,16 @@ Promise.all(ps).then((array) => {
   items[2].width = 300
   items[2].height = 300
 
+  items.unshift ({
+    element: (
+      <div className="element" >
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    ),
+    width: 100,
+    height: 100
+  })
+
   ReactDOM.render (
     <Example items={items} />,
     document.querySelector('.app')

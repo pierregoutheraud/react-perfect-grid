@@ -56,11 +56,22 @@ class PerfectGrid extends React.Component {
   }
 
   loadItem (item, i) {
-    if (this.isImage(item.url)) {
+    if (item.element) {
+      return this.loadElement(item,i)
+    }
+    else if (this.isImage(item.url)) {
       return this.loadImage(item,i)
     } else {
       return this.loadVideo(item,i)
     }
+  }
+
+  loadElement (item,i) {
+    return new Promise((resolve, reject) => {
+      console.log('loadElement');
+      item.type = 'element'
+      resolve({item,i})
+    })
   }
 
   loadVideo (item,i) {

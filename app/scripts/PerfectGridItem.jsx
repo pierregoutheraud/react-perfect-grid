@@ -14,8 +14,8 @@ class PerfectGridItem extends React.Component {
 
   render () {
 
-    let { H, margins, over, media, ratio, type } = this.props
-    let { src } = media
+    let { H, margins, over, media, ratio, type, element } = this.props
+    let src = media ? media.src : null
 
     let height = H
     let width = H*ratio
@@ -28,8 +28,15 @@ class PerfectGridItem extends React.Component {
 
     if (type === 'image') {
       media = <img src={src} />
-    } else {
+    } else if (type === 'video'){
       media = <video src={src} controls />
+    } else if (type === 'element'){
+      // element.style = style
+      return (
+        <div onClick={onClick} className="perfect-grid__item" style={style}>
+          { element }
+        </div>
+      )
     }
 
     let onClick = this.props.link ? ::this.onClick : null

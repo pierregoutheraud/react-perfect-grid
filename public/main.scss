@@ -172,11 +172,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 .perfect-grid__over {
   cursor: pointer;
-  opacity: 0;
-  transition: 300ms ease;
-  &:hover {
-    opacity: 1;
-  }
+  // opacity: 0;
+  // transition: 300ms ease;
+  // &:hover {
+  //   opacity: 1;
+  // }
 }
 
 .element {
@@ -195,17 +195,19 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 .over {
   padding: 30px;
   color: white;
-
   background-color: rgba(0,0,0,.2);
-
   h2 {
     font-size: 25px;
     font-weight: 300;
     text-align: left;
   }
-
   p {
     font-size: 16px;
   }
-
+  a {
+    color: white;
+    &:hover {
+      color: #E74C3C;
+    }
+  }
 }

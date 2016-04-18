@@ -61,9 +61,21 @@ Promise.all(ps).then((array) => {
   items[0].over = (
     <div className={"over"}>
       <h2>Over example</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>You can click the whole image or this
+        {' '}
+        <a
+          href="#"
+          target="_blank"
+          onClick={(e) => {
+            window.open('https://drp.io', '_blank')
+            e.preventDefault()
+            e.stopPropagation()
+          }}
+        >link</a>
+      </p>
     </div>
   )
+  items[0].link = 'https://vvall.li'
 
   // items[1].over = (
   //   <div className={"over"}>
@@ -74,13 +86,14 @@ Promise.all(ps).then((array) => {
   // Pre-defined width and height
   items[1] = {
     ...items[1],
+    // over: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>,
     // url: 'http://i.telegraph.co.uk/multimedia/archive/02357/eso-summary_2357457k.jpg',
     // width: 300,
     // height: 300,
     link: items[1].url
   }
 
-  items.unshift ({
+  items[2] = {
     element: (
       <div className="element" >
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -88,7 +101,7 @@ Promise.all(ps).then((array) => {
     ),
     width: 100,
     height: 100
-  })
+  }
 
   ReactDOM.render (
     <Example items={items} />,

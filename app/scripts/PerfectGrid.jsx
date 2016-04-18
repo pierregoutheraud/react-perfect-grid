@@ -2,6 +2,7 @@ import '../styles/main.scss'
 import React from 'react'
 
 import PerfectGridItem from './PerfectGridItem.jsx'
+import ScrollBarAdapter from './ScrollBarAdapter.jsx'
 
 // http://blog.vjeux.com/2012/image/image-layout-algorithm-google-plus.html
 // H = W / d
@@ -12,7 +13,6 @@ class PerfectGrid extends React.Component {
   constructor (props) {
     super()
     this.resizeTimeout = null
-    this.renderCount = 0
 
     let items = props.order ? Array(props.items.length).fill(null) : []
 
@@ -27,7 +27,7 @@ class PerfectGrid extends React.Component {
   componentDidMount () {
     this.setContainerWidth()
 
-    window.addEventListener('resize', ::this.setContainerWidth, false);
+    // window.addEventListener('resize', ::this.setContainerWidth, false);
 
     /*
     $(window).resize(() => {
@@ -36,6 +36,10 @@ class PerfectGrid extends React.Component {
       this.setContainerWidth()
     })
     */
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', ::this.setContainerWidth)
   }
 
   setContainerWidth () {
@@ -163,8 +167,6 @@ class PerfectGrid extends React.Component {
 
   render () {
 
-    this.renderCount++
-
     let { items, W } = this.state
     let { maxHeight, margins, loadingComponent } = this.props
 
@@ -222,6 +224,9 @@ class PerfectGrid extends React.Component {
     return (
       <div className="perfect-grid" ref="perfectGrid" style={style}>
         { perfectGrid }
+        <ScrollBarAdapter
+          onResize={::this.setContainerWidth}
+        />
       </div>
     );
 

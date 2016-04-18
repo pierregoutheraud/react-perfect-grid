@@ -81,6 +81,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _PerfectGridItem2 = _interopRequireDefault(_PerfectGridItem);
 
+	var _ScrollBarAdapter = __webpack_require__(8);
+
+	var _ScrollBarAdapter2 = _interopRequireDefault(_ScrollBarAdapter);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102,7 +106,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PerfectGrid).call(this));
 
 	    _this.resizeTimeout = null;
-	    _this.renderCount = 0;
 
 	    var items = props.order ? Array(props.items.length).fill(null) : [];
 
@@ -120,7 +123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function componentDidMount() {
 	      this.setContainerWidth();
 
-	      window.addEventListener('resize', this.setContainerWidth.bind(this), false);
+	      // window.addEventListener('resize', ::this.setContainerWidth, false);
 
 	      /*
 	      $(window).resize(() => {
@@ -129,6 +132,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setContainerWidth()
 	      })
 	      */
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      window.removeEventListener('resize', this.setContainerWidth.bind(this));
 	    }
 	  }, {
 	    key: 'setContainerWidth',
@@ -268,9 +276,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-
-	      this.renderCount++;
-
 	      var _state = this.state;
 	      var items = _state.items;
 	      var W = _state.W;
@@ -332,7 +337,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'perfect-grid', ref: 'perfectGrid', style: style },
-	        perfectGrid
+	        perfectGrid,
+	        _react2.default.createElement(_ScrollBarAdapter2.default, {
+	          onResize: this.setContainerWidth.bind(this)
+	        })
 	      );
 	    }
 	  }]);
@@ -803,6 +811,60 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react2.default.Component);
 
 	exports.default = PerfectGridItem;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Detect when scrollbar appears
+	var ScrollBarAdapter = _react2.default.createClass({
+	    displayName: 'ScrollBarAdapter',
+	    onResize: function onResize() {
+	        if (this.props.onResize) {
+	            this.props.onResize();
+	            return;
+	        }
+	        try {
+	            var evt = new UIEvent('resize');
+	            window.dispatchEvent(evt);
+	        } catch (e) {}
+	    },
+	    componentDidMount: function componentDidMount() {
+	        this.refs.frame.contentWindow.addEventListener('resize', this.onResize, false);
+	    },
+	    componentWillUnmount: function componentWillUnmount() {
+	        this.refs.frame.contentWindow.removeEventListener('resize', this.onResize);
+	    },
+	    render: function render() {
+	        var styles = {
+	            height: 0,
+	            margin: 0,
+	            padding: 0,
+	            overflow: "hidden",
+	            borderWidth: 0,
+	            position: "absolute",
+	            backgroundColor: "transparent",
+	            width: "100%",
+	            left: 0,
+	            right: 0
+	        };
+	        return _react2.default.createElement('iframe', { classNames: 'ScrollBarAdapter', ref: 'frame', style: styles });
+	    }
+	});
+
+	exports.default = ScrollBarAdapter;
 
 /***/ }
 /******/ ])

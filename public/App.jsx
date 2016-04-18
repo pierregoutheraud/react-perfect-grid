@@ -173,6 +173,7 @@ class Example extends React.Component {
           maxHeight={maxHeight}
           margins={margins}
           order={true}
+          debug={true}
         />
       </div>
     )

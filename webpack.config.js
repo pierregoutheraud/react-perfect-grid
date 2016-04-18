@@ -1,6 +1,4 @@
-module.exports.getConfig = function(port) {
-
-  port = (typeof port === 'undefined' || !port) ? 9001 : port;
+module.exports.getConfig = function() {
 
   var webpack = require('webpack');
   var path = require('path');
@@ -15,9 +13,8 @@ module.exports.getConfig = function(port) {
     output: {
       filename: 'react-perfect-grid.js',
       path: path.join(__dirname + '/build'),
-      // publicPath: '/js/',
       libraryTarget: 'umd',
-      library: 'ReactPerfectGrid'
+      // library: 'ReactPerfectGrid'
     },
     resolve: {
       modulesDirectories: [
@@ -26,9 +23,9 @@ module.exports.getConfig = function(port) {
       ],
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false }
-      })
+      // new webpack.optimize.UglifyJsPlugin({
+      //   compress: { warnings: false }
+      // })
     ],
     module: {
       loaders: [
@@ -40,7 +37,6 @@ module.exports.getConfig = function(port) {
           test: /\.scss$/,
           include: [
             path.join(__dirname, 'app/styles'),
-            path.join(__dirname, 'public')
           ],
           loader: 'style-loader!css-loader!postcss-loader!sass-loader'
         },
@@ -53,7 +49,6 @@ module.exports.getConfig = function(port) {
           test: /\.jsx?$/,
           include: [
             path.join(__dirname, 'app/scripts'),
-            path.join(__dirname, 'public')
           ],
           loaders: ['babel-loader']
         }
@@ -62,6 +57,9 @@ module.exports.getConfig = function(port) {
     postcss: function () {
       return [autoprefixer];
     },
+    // externals: {
+    //   react : 'React'
+    // },
     externals: {
       'react': {
         'root': 'React',
@@ -69,12 +67,12 @@ module.exports.getConfig = function(port) {
         'commonjs2': 'react',
         'amd': 'react'
       },
-      'react-dom': {
-        'root': 'ReactDOM',
-        'commonjs': 'react-dom',
-        'commonjs2': 'react-dom',
-        'amd': 'react-dom'
-      }
+      // 'react-dom': {
+      //   'root': 'ReactDOM',
+      //   'commonjs': 'react-dom',
+      //   'commonjs2': 'react-dom',
+      //   'amd': 'react-dom'
+      // }
     }
   };
 

@@ -62,8 +62,8 @@ gulp.task('website', function(cb) {
 
 gulp.task('scripts', function(cb) {
 
-  var webpackConfig = require('./webpack.config.js').getConfig('prod', port);
-  return gulp.src("./app/scripts/PerfectGrid.jsx")
+  var webpackConfig = require('./webpack.config.js').getConfig();
+  return gulp.src("app/scripts/PerfectGrid.jsx")
     .pipe(webpackStream(webpackConfig))
     // .pipe($.uglify())
     .pipe(gulpSize({ title : 'js' }))
@@ -111,7 +111,8 @@ gulp.task('dev', function(callback) {
 gulp.task('build', function(callback){
   runSequence(
     'clean',
-    ['images', 'scripts'/*, 'html'*/],
+    'scripts',
+    // ['images', 'scripts', 'html'],
     callback
   );
 });

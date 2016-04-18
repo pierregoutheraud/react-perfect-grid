@@ -2,7 +2,7 @@ import './main.scss'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import PerfectGrid from '../build/react-perfect-grid.js'
+
 import PerfectGrid from '../app/scripts/PerfectGrid.jsx'
 import $ from 'jquery'
 

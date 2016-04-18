@@ -19,8 +19,8 @@ module.exports.getConfig = function(port) {
       filename: 'website.js',
       path: path.join(__dirname),
       // publicPath: '/js/',
-      libraryTarget: 'umd',
-      library: 'ReactPerfectGrid'
+      // libraryTarget: 'umd',
+      // library: 'ReactPerfectGrid'
     },
     resolve: {
       modulesDirectories: [

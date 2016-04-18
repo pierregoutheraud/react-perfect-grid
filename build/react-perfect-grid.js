@@ -89,8 +89,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// var React = global.React || require('react')
-
 	// http://blog.vjeux.com/2012/image/image-layout-algorithm-google-plus.html
 	// H = W / d
 	// H = W / ( (w1/h1) + (w2/h2) + ... + (wn/hn) )
@@ -136,6 +134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'setContainerWidth',
 	    value: function setContainerWidth() {
 	      var W = this.refs.perfectGrid.offsetWidth;
+	      if (this.props.debug) console.debug('Container width: ' + W);
 	      this.setState({ W: W });
 	    }
 	  }, {
@@ -344,7 +343,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	PerfectGrid.defaultProps = {
 	  margins: 0,
 	  order: true,
-	  maxHeight: 300
+	  maxHeight: 300,
+	  debug: false
 	};
 
 	exports.default = PerfectGrid;
@@ -384,7 +384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  max-width: 100%;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__over {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    z-index: 2; }\n  .perfect-grid__media {\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n", ""]);
+	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__over {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    z-index: 2; }\n  .perfect-grid__media {\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n", ""]);
 
 	// exports
 
@@ -726,8 +726,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	// var React = global.React || require('react')
 
 	var PerfectGridItem = function (_React$Component) {
 	  _inherits(PerfectGridItem, _React$Component);

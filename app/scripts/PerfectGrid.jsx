@@ -40,6 +40,7 @@ class PerfectGrid extends React.Component {
 
   setContainerWidth () {
     let W = this.refs.perfectGrid.offsetWidth
+    if (this.props.debug) console.debug('Container width: ' + W)
     this.setState({ W })
   }
 
@@ -230,7 +231,8 @@ class PerfectGrid extends React.Component {
 PerfectGrid.defaultProps = {
   margins: 0,
   order: true,
-  maxHeight: 300
+  maxHeight: 300,
+  debug: false
 }
 
 export default PerfectGrid

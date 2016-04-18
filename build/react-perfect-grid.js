@@ -392,7 +392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__over {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    z-index: 2; }\n  .perfect-grid__media {\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n", ""]);
+	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__over {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 2; }\n  .perfect-grid__media {\n    position: relative;\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media--link {\n      cursor: pointer; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n", ""]);
 
 	// exports
 
@@ -763,6 +763,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var ratio = _props.ratio;
 	      var type = _props.type;
 	      var element = _props.element;
+	      var link = _props.link;
 
 	      var src = media ? media.src : null;
 
@@ -788,11 +789,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        );
 	      }
 
-	      var onClick = this.props.link ? this.onClick.bind(this) : null;
+	      var onClick = link ? this.onClick.bind(this) : null;
 
 	      return _react2.default.createElement(
 	        'div',
-	        { onClick: onClick, className: 'perfect-grid__item', style: style },
+	        {
+	          className: 'perfect-grid__item',
+	          style: style
+	        },
 	        over ? _react2.default.createElement(
 	          'div',
 	          { className: 'perfect-grid__over' },
@@ -800,7 +804,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        ) : null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'perfect-grid__media' },
+	          {
+	            className: "perfect-grid__media" + (link ? ' perfect-grid__media--link' : ''),
+	            onClick: onClick
+	          },
 	          media
 	        )
 	      );

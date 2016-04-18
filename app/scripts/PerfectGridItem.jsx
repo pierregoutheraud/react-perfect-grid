@@ -14,7 +14,7 @@ class PerfectGridItem extends React.Component {
 
   render () {
 
-    let { H, margins, over, media, ratio, type, element } = this.props
+    let { H, margins, over, media, ratio, type, element, link } = this.props
     let src = media ? media.src : null
 
     let height = H
@@ -39,12 +39,18 @@ class PerfectGridItem extends React.Component {
       )
     }
 
-    let onClick = this.props.link ? ::this.onClick : null
+    let onClick = link ? ::this.onClick : null
 
     return (
-      <div onClick={onClick} className="perfect-grid__item" style={style}>
+      <div
+        className="perfect-grid__item"
+        style={style}
+      >
         { over ? <div className="perfect-grid__over" >{ over }</div> : null }
-        <div className="perfect-grid__media" >
+        <div
+          className={"perfect-grid__media" + (link ? ' perfect-grid__media--link' : '')}
+          onClick={onClick}
+        >
           { media }
         </div>
       </div>

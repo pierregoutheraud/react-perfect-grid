@@ -36,17 +36,7 @@ function fetchTumblr (tumblr, page=1) {
 
 let url = ''
 url = 'oxane.tumblr.com'
-// url = 'nicolasbessol.tumblr.com'
-// url = 'without-coriander-please.tumblr.com'
 // url = 'regarderlesfilles.tumblr.com'
-
-// function nextPage({images,page, url}) {
-  // page++
-  // return fetchTumblr(url, page).then(({imagesNext, pageNext}) => {
-    // console.log(imagesNext, pageNext);
-    // return {images: images.concat(imagesNext), page: pageNext}
-  // })
-// }
 
 let ps = []
 for (let i=1;i<=3;i++) {
@@ -75,17 +65,20 @@ Promise.all(ps).then((array) => {
     </div>
   )
 
-  items[1].link = 'http://google.fr'
-  items[1].over = (
-    <div className={"over"}>
-      <h2>Click to open link</h2>
-    </div>
-  )
+  // items[1].over = (
+  //   <div className={"over"}>
+  //     <h2>Click to open link</h2>
+  //   </div>
+  // )
 
   // Pre-defined width and height
-  items[2].url = 'http://i.telegraph.co.uk/multimedia/archive/02357/eso-summary_2357457k.jpg'
-  items[2].width = 300
-  items[2].height = 300
+  items[1] = {
+    ...items[1],
+    // url: 'http://i.telegraph.co.uk/multimedia/archive/02357/eso-summary_2357457k.jpg',
+    // width: 300,
+    // height: 300,
+    link: items[1].url
+  }
 
   items.unshift ({
     element: (

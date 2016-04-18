@@ -90,7 +90,7 @@ Promise.all(ps).then((array) => {
   items.unshift ({
     element: (
       <div className="element" >
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
     ),
     width: 100,
@@ -109,7 +109,8 @@ class Example extends React.Component {
     super()
     this.state = {
       margins: 0,
-      maxHeight: Math.floor($(window).height() * .7)
+      maxHeight: 300
+      // maxHeight: Math.floor($(window).height() * .5)
     }
   }
 
@@ -128,7 +129,7 @@ class Example extends React.Component {
     let { margins, maxHeight } = this.state
     const { items } = this.props
 
-    const itemsHeader = items.slice(0,40)
+    const itemsHeader = items.slice(1,40)
 
     return (
       <div className="example">

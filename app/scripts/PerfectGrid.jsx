@@ -68,7 +68,6 @@ class PerfectGrid extends React.Component {
 
   loadElement (item,i) {
     return new Promise((resolve, reject) => {
-      console.log('loadElement');
       item.type = 'element'
       resolve({item,i})
     })

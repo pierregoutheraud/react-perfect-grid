@@ -344,10 +344,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'perfect-grid', ref: 'perfectGrid', style: style },
-	        perfectGrid,
-	        _react2.default.createElement(_ScrollBarAdapter2.default, {
-	          onResize: this.setContainerWidth.bind(this)
-	        })
+	        _react2.default.createElement(_ScrollBarAdapter2.default, { onResize: this.setContainerWidth.bind(this) }),
+	        perfectGrid
 	      );
 	    }
 	  }]);
@@ -403,7 +401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  max-width: 100%;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__link {\n    cursor: pointer; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n    .perfect-grid__item > * {\n      z-index: 2; }\n  .perfect-grid__media {\n    position: relative;\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n", ""]);
+	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  position: relative;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  max-width: 100%;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__link {\n    cursor: pointer; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n    .perfect-grid__item > * {\n      z-index: 2; }\n  .perfect-grid__media {\n    position: relative;\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n", ""]);
 
 	// exports
 
@@ -865,16 +863,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    render: function render() {
 	        var styles = {
+	            position: "absolute",
+	            top: 0,
 	            height: 0,
+	            left: 0,
 	            margin: 0,
 	            padding: 0,
 	            overflow: "hidden",
 	            borderWidth: 0,
-	            position: "absolute",
 	            backgroundColor: "transparent",
 	            width: "100%",
-	            left: 0,
-	            right: 0
+	            visibility: 'hidden'
 	        };
 	        return _react2.default.createElement('iframe', { classNames: 'ScrollBarAdapter', ref: 'frame', style: styles });
 	    }

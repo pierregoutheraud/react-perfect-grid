@@ -229,10 +229,8 @@ class PerfectGrid extends React.Component {
 
     return (
       <div className="perfect-grid" ref="perfectGrid" style={style}>
+        <ScrollBarAdapter onResize={::this.setContainerWidth} />
         { perfectGrid }
-        <ScrollBarAdapter
-          onResize={::this.setContainerWidth}
-        />
       </div>
     );
 

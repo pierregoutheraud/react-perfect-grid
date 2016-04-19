@@ -21,16 +21,17 @@ var ScrollBarAdapter = React.createClass({
     },
     render(){
         var styles = {
+            position: "absolute",
+            top: 0,
             height: 0,
+            left: 0,
             margin: 0,
             padding: 0,
             overflow: "hidden",
             borderWidth: 0,
-            position: "absolute",
             backgroundColor: "transparent",
             width: "100%",
-            left: 0,
-            right: 0
+            visibility: 'hidden'
         };
         return (
             <iframe classNames="ScrollBarAdapter" ref="frame" style={styles} />

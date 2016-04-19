@@ -392,7 +392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__link {\n    cursor: pointer; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__over {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    z-index: 2; }\n  .perfect-grid__media {\n    position: relative;\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n", ""]);
+	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__link {\n    cursor: pointer; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n    .perfect-grid__item > * {\n      position: absolute;\n      z-index: 2; }\n  .perfect-grid__media {\n    position: relative;\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n", ""]);
 
 	// exports
 
@@ -791,6 +791,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var onClick = link ? this.onClick.bind(this) : null;
 
+	      // over = over ? <div className="perfect-grid__over" >{ over }</div> : null
+
 	      return _react2.default.createElement(
 	        'div',
 	        {
@@ -798,11 +800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onClick: onClick,
 	          style: style
 	        },
-	        over ? _react2.default.createElement(
-	          'div',
-	          { className: 'perfect-grid__over' },
-	          over
-	        ) : null,
+	        over,
 	        _react2.default.createElement(
 	          'div',
 	          {

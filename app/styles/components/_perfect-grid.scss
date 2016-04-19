@@ -26,13 +26,23 @@
     flex-wrap: wrap;
   }
 
-  &__over {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
+  // &__over {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    // z-index: 2;
+  // }
+
+  &__item {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    > * {
+      position: absolute;
+      z-index: 2;
+    }
   }
 
   &__media {
@@ -47,12 +57,6 @@
       z-index: 1;
       background-color: black;
     }
-  }
-
-  &__item {
-    position: relative;
-    display: flex;
-    overflow: hidden;
   }
 
 }

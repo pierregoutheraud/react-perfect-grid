@@ -41,13 +41,15 @@ class PerfectGridItem extends React.Component {
 
     let onClick = link ? ::this.onClick : null
 
+    // over = over ? <div className="perfect-grid__over" >{ over }</div> : null
+
     return (
       <div
         className={"perfect-grid__item" + (link ? ' perfect-grid__link' : '')}
         onClick={onClick}
         style={style}
       >
-        { over ? <div className="perfect-grid__over" >{ over }</div> : null }
+        { over }
         <div
           className={"perfect-grid__media"}
         >

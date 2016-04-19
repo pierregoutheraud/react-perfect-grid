@@ -93,6 +93,15 @@ Promise.all(ps).then((array) => {
     link: items[1].url
   }
 
+  items.unshift({
+    url: 'https://thumbs.gfycat.com/CautiousWealthyBeagle-mobile.mp4',
+    over: (
+      <div className="over">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    )
+  })
+
   items[2] = {
     element: (
       <div className="element" >

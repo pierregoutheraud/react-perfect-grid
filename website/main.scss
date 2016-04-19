@@ -193,9 +193,16 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 .over {
-  padding: 30px;
-  color: white;
-  background-color: rgba(0,0,0,.2);
+
+  &__text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 30px;
+    color: white;
+    background-color: rgba(0,0,0,.2);
+  }
+
   h2 {
     font-size: 25px;
     font-weight: 300;

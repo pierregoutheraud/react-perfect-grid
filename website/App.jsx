@@ -60,19 +60,21 @@ Promise.all(ps).then((array) => {
 
   items[0].over = (
     <div className={"over"}>
-      <h2>Over example</h2>
-        <p>You can click the whole image or this
-        {' '}
-        <a
-          href="#"
-          target="_blank"
-          onClick={(e) => {
-            window.open('https://drp.io', '_blank')
-            e.preventDefault()
-            e.stopPropagation()
-          }}
-        >link</a>
-      </p>
+      <div className="over__text">
+        <h2>Over example</h2>
+          <p>You can click the whole image or this
+          {' '}
+          <a
+            href="#"
+            target="_blank"
+            onClick={(e) => {
+              window.open('https://drp.io', '_blank')
+              e.preventDefault()
+              e.stopPropagation()
+            }}
+          >link</a>
+        </p>
+      </div>
     </div>
   )
   items[0].link = 'https://vvall.li'
@@ -97,7 +99,9 @@ Promise.all(ps).then((array) => {
     url: 'https://thumbs.gfycat.com/CautiousWealthyBeagle-mobile.mp4',
     over: (
       <div className="over">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <div className="over__text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
       </div>
     )
   })

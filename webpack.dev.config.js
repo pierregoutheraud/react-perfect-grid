@@ -12,7 +12,7 @@ module.exports.getConfig = function(port) {
         'webpack-dev-server/client?http://localhost:'+port, // WebpackDevServer host and port
         'webpack/hot/only-dev-server',
         // "webpack/hot/dev-server",
-        "./public/App.jsx"
+        "./website/App.jsx"
       ]
     },
     output: {
@@ -47,7 +47,7 @@ module.exports.getConfig = function(port) {
           test: /\.scss$/,
           include: [
             path.join(__dirname, 'app/styles'),
-            path.join(__dirname, 'public')
+            path.join(__dirname, 'website')
           ],
           loader: 'style-loader!css-loader!postcss-loader!sass-loader'
         },
@@ -60,7 +60,7 @@ module.exports.getConfig = function(port) {
           test: /\.jsx?$/,
           include: [
             path.join(__dirname, 'app/scripts'),
-            path.join(__dirname, 'public')
+            path.join(__dirname, 'website')
           ],
           loaders: ['react-hot','babel-loader']
         }

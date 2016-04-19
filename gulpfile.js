@@ -23,14 +23,6 @@ var isProduction = environment === 'prod';
 var port = gulpUtil.env.port || 9999;
 var app = 'app/';
 var build = 'build/';
-var public = 'public/'
-
-// copy images
-gulp.task('images', function(cb) {
-  return gulp.src(public + 'images/**/*')
-    .pipe(gulpSize({ title : 'images' }))
-    .pipe(gulp.dest(build + 'images/'))
-});
 
 gulp.task("webpack-dev-server", function(callback) {
     var webpackConfig = require('./webpack.dev.config.js').getConfig(port)
@@ -55,7 +47,7 @@ gulp.task("webpack-dev-server", function(callback) {
 
 gulp.task('website', function(cb) {
   var webpackConfig = require('./webpack.dev.config.js').getConfig(port)
-  return gulp.src('./public/App.jsx')
+  return gulp.src('./website/App.jsx')
           .pipe(webpackStream(webpackConfig))
           .pipe(gulp.dest('./'));
 })
@@ -77,20 +69,6 @@ gulp.task('serve', function() {
     root: build,
     port: port
   });
-});
-
-// copy html from app to dist
-gulp.task('html', function(cb) {
-  return gulp.src(public + 'index.html')
-    .pipe(gulpMinifyHtml())
-    .pipe(gulpSize({ title : 'html' }))
-    .pipe(gulp.dest(build));
-});
-
-gulp.task('copy', function(cb) {
-  return gulp.src(public + 'updates.xml')
-    .pipe(gulpSize({ title : 'copy' }))
-    .pipe(gulp.dest(build));
 });
 
 // clean dist

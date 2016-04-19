@@ -112,8 +112,8 @@ Promise.all(ps).then((array) => {
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
     ),
-    width: 100,
-    height: 100
+    width: 200, // only ratio width/height is important with a custom element
+    height: 200
   }
 
   ReactDOM.render (

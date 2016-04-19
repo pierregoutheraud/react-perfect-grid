@@ -24,6 +24,12 @@ class PerfectGrid extends React.Component {
     }
   }
 
+  getChildContext () {
+    return {
+      debug: this.props.debug
+    }
+  }
+
   componentDidMount () {
     this.setContainerWidth()
 
@@ -56,7 +62,7 @@ class PerfectGrid extends React.Component {
     })
 
     Promise.all(promises).then((images) => {
-      // console.debug('All images loaded!')
+      if (this.props.debug) console.debug('All images loaded!')
     })
   }
 
@@ -231,6 +237,10 @@ class PerfectGrid extends React.Component {
     );
 
   }
+}
+
+PerfectGrid.childContextTypes = {
+  debug: React.PropTypes.bool
 }
 
 PerfectGrid.defaultProps = {

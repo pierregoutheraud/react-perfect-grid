@@ -58,7 +58,9 @@ Promise.all(ps).then((array) => {
     return { url }
   })
 
-  items[0].over = (
+  let items2 = items.slice()
+
+  items2[0].over = (
     <div className={"over"}>
       <div className="over__text">
         <h2>Over example</h2>
@@ -77,25 +79,25 @@ Promise.all(ps).then((array) => {
       </div>
     </div>
   )
-  items[0].link = 'https://vvall.li'
+  items2[0].link = 'https://vvall.li'
 
-  // items[1].over = (
+  // items2[1].over = (
   //   <div className={"over"}>
   //     <h2>Click to open link</h2>
   //   </div>
   // )
 
   // Pre-defined width and height
-  items[1] = {
-    ...items[1],
+  items2[1] = {
+    ...items2[1],
     // over: <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>,
     // url: 'http://i.telegraph.co.uk/multimedia/archive/02357/eso-summary_2357457k.jpg',
     // width: 300,
     // height: 300,
-    link: items[1].url
+    link: items2[1].url
   }
 
-  items.unshift({
+  items2.unshift({
     url: 'https://thumbs.gfycat.com/CautiousWealthyBeagle-mobile.mp4',
     over: (
       <div className="over">
@@ -106,7 +108,7 @@ Promise.all(ps).then((array) => {
     )
   })
 
-  items[2] = {
+  items2[2] = {
     element: (
       <div className="element" >
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -117,7 +119,10 @@ Promise.all(ps).then((array) => {
   }
 
   ReactDOM.render (
-    <Example items={items} />,
+    <Example
+      items2={items2}
+      items={items}
+    />,
     document.querySelector('.app')
   )
 
@@ -146,7 +151,7 @@ class Example extends React.Component {
   render () {
 
     let { margins, maxHeight } = this.state
-    const { items } = this.props
+    const { items, items2 } = this.props
 
     const itemsHeader = items.slice(1,40)
 
@@ -188,7 +193,7 @@ class Example extends React.Component {
           </form>
         </div>
         <PerfectGrid
-          items={items}
+          items={items2}
           maxHeight={maxHeight}
           margins={margins}
           order={true}

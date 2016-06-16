@@ -148,10 +148,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'setContainerWidth',
 	    value: function setContainerWidth() {
-	      var W = this.refs.perfectGrid.offsetWidth;
-	      if (W !== this.state.W) {
-	        if (this.props.debug) console.debug('Setting container width: ' + W);
-	        this.setState({ W: W });
+	      if (this.refs.perfectGrid) {
+	        var W = this.refs.perfectGrid.offsetWidth;
+	        if (W !== this.state.W) {
+	          if (this.props.debug) console.debug('Setting container width: ' + W);
+	          this.setState({ W: W });
+	        }
 	      }
 	    }
 	  }, {

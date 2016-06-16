@@ -49,10 +49,12 @@ class PerfectGrid extends React.Component {
   }
 
   setContainerWidth () {
-    let W = this.refs.perfectGrid.offsetWidth
-    if (W !== this.state.W) {
-      if (this.props.debug) console.debug('Setting container width: ' + W)
-      this.setState({ W })
+    if (this.refs.perfectGrid) {
+      let W = this.refs.perfectGrid.offsetWidth
+      if (W !== this.state.W) {
+        if (this.props.debug) console.debug('Setting container width: ' + W)
+        this.setState({ W })
+      }
     }
   }
 

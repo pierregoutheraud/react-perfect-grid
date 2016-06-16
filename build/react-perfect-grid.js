@@ -149,8 +149,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'setContainerWidth',
 	    value: function setContainerWidth() {
 	      var W = this.refs.perfectGrid.offsetWidth;
-	      if (this.props.debug) console.debug('Container width: ' + W);
-	      this.setState({ W: W });
+	      if (W !== this.state.W) {
+	        if (this.props.debug) console.debug('Setting container width: ' + W);
+	        this.setState({ W: W });
+	      }
 	    }
 	  }, {
 	    key: 'componentWillMount',
@@ -158,12 +160,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this2 = this;
 
 	      var promises = this.props.items.map(function (item, i) {
-	        return _this2.loadItem(item, i).then(_this2.addMedia.bind(_this2));
-	        //.then(::this.imageLayout)
+	        return _this2.loadItem(item, i).then(_this2.addMedia.bind(_this2)).then(_this2.setContainerWidth.bind(_this2));
 	      });
 
 	      Promise.all(promises).then(function (images) {
 	        if (_this2.props.debug) console.debug('All images loaded!');
+	        // this.setContainerWidth()
 	      });
 	    }
 	  }, {
@@ -401,7 +403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  position: relative;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  max-width: 100%;\n  -webkit-flex-wrap: wrap;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -webkit-align-content: flex-start;\n      -ms-flex-line-pack: start;\n          align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__link {\n    cursor: pointer; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -webkit-inline-flex;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-flex-wrap: wrap;\n        -ms-flex-wrap: wrap;\n            flex-wrap: wrap; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n    .perfect-grid__item > * {\n      z-index: 2; }\n  .perfect-grid__media {\n    position: relative;\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n", ""]);
+	exports.push([module.id, ".perfect-grid {\n  box-sizing: border-box;\n  position: relative;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  max-width: 100%;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-line-pack: start;\n      align-content: flex-start; }\n  .perfect-grid *, .perfect-grid *:before, .perfect-grid *:after {\n    box-sizing: inherit; }\n  .perfect-grid__link {\n    cursor: pointer; }\n  .perfect-grid__rows {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex; }\n  .perfect-grid__row {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap; }\n  .perfect-grid__item {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    overflow: hidden; }\n    .perfect-grid__item > * {\n      z-index: 2; }\n  .perfect-grid__media {\n    position: relative;\n    z-index: 1;\n    width: 100%;\n    height: 100%; }\n    .perfect-grid__media img, .perfect-grid__media video {\n      display: block;\n      height: 100%;\n      position: relative;\n      z-index: 1;\n      background-color: black; }\n", ""]);
 
 	// exports
 

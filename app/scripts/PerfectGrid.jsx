@@ -50,19 +50,22 @@ class PerfectGrid extends React.Component {
 
   setContainerWidth () {
     let W = this.refs.perfectGrid.offsetWidth
-    if (this.props.debug) console.debug('Container width: ' + W)
-    this.setState({ W })
+    if (W !== this.state.W) {
+      if (this.props.debug) console.debug('Setting container width: ' + W)
+      this.setState({ W })
+    }
   }
 
   componentWillMount () {
     let promises = this.props.items.map((item, i) => {
       return this.loadItem(item, i)
                  .then(::this.addMedia)
-                 //.then(::this.imageLayout)
+                 .then(::this.setContainerWidth)
     })
 
     Promise.all(promises).then((images) => {
       if (this.props.debug) console.debug('All images loaded!')
+      // this.setContainerWidth()
     })
   }
 
@@ -226,6 +229,7 @@ class PerfectGrid extends React.Component {
     let style = {
       padding: margins/2 + 'px'
     }
+
 
     return (
       <div className="perfect-grid" ref="perfectGrid" style={style}>

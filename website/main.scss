@@ -50,10 +50,13 @@ h2 {
     position: relative;
     overflow: hidden;
     display: flex;
-    flex: 1;
+    // flex: 1;
     flex-direction: column;
-    text-align: center;
-    padding: 200px 0;
+    // text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    // padding: 200px 0;
     // background-color: rgba(0,0,0,.03);
     background-color: #E74C3C;
     color: white;
@@ -107,6 +110,10 @@ h2 {
       padding: 0 20px;
       letter-spacing: 0px;
     }
+  }
+
+  &__demo {
+    height: 10000px;
   }
 
   &__settings {

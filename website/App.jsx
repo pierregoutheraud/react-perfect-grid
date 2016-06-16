@@ -155,6 +155,16 @@ class Example extends React.Component {
 
     const itemsHeader = items.slice(1,40)
 
+    // return (
+    //   <PerfectGrid
+    //     items={items2}
+    //     maxHeight={maxHeight}
+    //     margins={margins}
+    //     order={true}
+    //     debug={true}
+    //   />
+    // )
+
     return (
       <div className="example">
         <div className="example__title">
@@ -179,26 +189,29 @@ class Example extends React.Component {
           <GistEmbed gist="7f7136927595d34e17ab5faef4689dfc" />
         </div>
 
-        <div className="example__settings">
-          <h2>Demo</h2>
-          <form>
-            <fieldset>
-              <input type="range" ref="inputMargins" onChange={::this.onChangeMargins} defaultValue={margins} min="0" max="300" step="1" />
-              <p>Margins: <span>{ margins }</span></p>
-            </fieldset>
-            <fieldset>
-              <input type="range" ref="inputMaxHeight" onChange={::this.onChangeMaxHeight} defaultValue={maxHeight} min="20" max="1200" step="1" />
-              <p>Row height: <span>{ maxHeight }</span></p>
-            </fieldset>
-          </form>
+        <div className="example__demo">
+          <div className="example__settings">
+            <h2>Demo</h2>
+            <form>
+              <fieldset>
+                <input type="range" ref="inputMargins" onChange={::this.onChangeMargins} defaultValue={margins} min="0" max="300" step="1" />
+                <p>Margins: <span>{ margins }</span></p>
+              </fieldset>
+              <fieldset>
+                <input type="range" ref="inputMaxHeight" onChange={::this.onChangeMaxHeight} defaultValue={maxHeight} min="20" max="1200" step="1" />
+                <p>Row height: <span>{ maxHeight }</span></p>
+              </fieldset>
+            </form>
+          </div>
+          <PerfectGrid
+            items={items2}
+            maxHeight={maxHeight}
+            margins={margins}
+            order={true}
+            debug={true}
+          />
         </div>
-        <PerfectGrid
-          items={items2}
-          maxHeight={maxHeight}
-          margins={margins}
-          order={true}
-          debug={true}
-        />
+
       </div>
     )
   }

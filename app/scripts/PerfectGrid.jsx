@@ -30,6 +30,10 @@ class PerfectGrid extends React.Component {
     }
   }
 
+  componentWillMount () {
+    this.loadItems()
+  }
+
   componentDidMount () {
     this.setContainerWidth()
 
@@ -48,18 +52,12 @@ class PerfectGrid extends React.Component {
     window.removeEventListener('resize', ::this.setContainerWidth)
   }
 
-  setContainerWidth () {
-    if (this.refs.perfectGrid) {
-      let W = this.refs.perfectGrid.offsetWidth
-      if (W !== this.state.W) {
-        if (this.props.debug) console.debug('Setting container width: ' + W)
-        this.setState({ W })
-      }
-    }
+  componentWillReceiveProps(nextProps) {
+    this.loadItems(nextProps)
   }
 
-  componentWillMount () {
-    let promises = this.props.items.map((item, i) => {
+  loadItems(props=this.props) {
+    let promises = props.items.map((item, i) => {
       return this.loadItem(item, i)
                  .then(::this.addMedia)
                  .then(::this.setContainerWidth)
@@ -69,6 +67,16 @@ class PerfectGrid extends React.Component {
       if (this.props.debug) console.debug('All images loaded!')
       // this.setContainerWidth()
     })
+  }
+
+  setContainerWidth () {
+    if (this.refs.perfectGrid) {
+      let W = this.refs.perfectGrid.offsetWidth
+      if (W !== this.state.W) {
+        if (this.props.debug) console.debug('Setting container width: ' + W)
+        this.setState({ W })
+      }
+    }
   }
 
   loadItem (item, i) {

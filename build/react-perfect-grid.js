@@ -126,6 +126,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    }
 	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.loadItems();
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.setContainerWidth();
@@ -146,6 +151,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	      window.removeEventListener('resize', this.setContainerWidth.bind(this));
 	    }
 	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      this.loadItems(nextProps);
+	    }
+	  }, {
+	    key: 'loadItems',
+	    value: function loadItems() {
+	      var _this2 = this;
+
+	      var props = arguments.length <= 0 || arguments[0] === undefined ? this.props : arguments[0];
+
+	      var promises = props.items.map(function (item, i) {
+	        return _this2.loadItem(item, i).then(_this2.addMedia.bind(_this2)).then(_this2.setContainerWidth.bind(_this2));
+	      });
+
+	      Promise.all(promises).then(function (images) {
+	        if (_this2.props.debug) console.debug('All images loaded!');
+	        // this.setContainerWidth()
+	      });
+	    }
+	  }, {
 	    key: 'setContainerWidth',
 	    value: function setContainerWidth() {
 	      if (this.refs.perfectGrid) {
@@ -155,20 +181,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          this.setState({ W: W });
 	        }
 	      }
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      var _this2 = this;
-
-	      var promises = this.props.items.map(function (item, i) {
-	        return _this2.loadItem(item, i).then(_this2.addMedia.bind(_this2)).then(_this2.setContainerWidth.bind(_this2));
-	      });
-
-	      Promise.all(promises).then(function (images) {
-	        if (_this2.props.debug) console.debug('All images loaded!');
-	        // this.setContainerWidth()
-	      });
 	    }
 	  }, {
 	    key: 'loadItem',

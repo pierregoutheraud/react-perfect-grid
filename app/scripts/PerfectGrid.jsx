@@ -64,6 +64,7 @@ class PerfectGrid extends React.Component {
     })
 
     Promise.all(promises).then((images) => {
+      if (this.props.success) this.props.success()
       if (this.props.debug) console.debug('All images loaded!')
       // this.setContainerWidth()
     })

@@ -53,12 +53,26 @@ class PerfectGrid extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props.items) !== JSON.stringify(nextProps.items)) {
+
+    // console.log('componentWillReceiveProps', nextProps.items);
+
+    let flag = false
+    for (let i=0;i< nextProps.items.length;i++) {
+      let itemNext = nextProps.items[i],
+          item = this.props.items[i]
+      if (itemNext.url !== item.url) {
+        flag = true
+      }
+    }
+
+    // if (JSON.stringify(this.props.items) !== JSON.stringify(nextProps.items)) {
+    if (flag) {
       this.loadItems(nextProps)
     }
   }
 
   loadItems(props=this.props) {
+    if (this.props.debug) console.debug('Load items', props.items)
     let promises = props.items.map((item, i) => {
       return this.loadItem(item, i)
                  .then(::this.addMedia)

@@ -167,6 +167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 
 	      Promise.all(promises).then(function (images) {
+	        if (_this2.props.success) _this2.props.success();
 	        if (_this2.props.debug) console.debug('All images loaded!');
 	        // this.setContainerWidth()
 	      });

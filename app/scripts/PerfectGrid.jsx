@@ -53,7 +53,9 @@ class PerfectGrid extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.loadItems(nextProps)
+    if (JSON.stringify(this.props.items) !== JSON.stringify(nextProps.items)) {
+      this.loadItems(nextProps)
+    }
   }
 
   loadItems(props=this.props) {

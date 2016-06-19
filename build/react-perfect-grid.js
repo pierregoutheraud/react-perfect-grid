@@ -153,7 +153,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      this.loadItems(nextProps);
+	      if (JSON.stringify(this.props.items) !== JSON.stringify(nextProps.items)) {
+	        this.loadItems(nextProps);
+	      }
 	    }
 	  }, {
 	    key: 'loadItems',

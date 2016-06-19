@@ -153,7 +153,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      if (JSON.stringify(this.props.items) !== JSON.stringify(nextProps.items)) {
+
+	      // console.log('componentWillReceiveProps', nextProps.items);
+
+	      var flag = false;
+	      for (var i = 0; i < nextProps.items.length; i++) {
+	        var itemNext = nextProps.items[i],
+	            item = this.props.items[i];
+	        if (itemNext.url !== item.url) {
+	          flag = true;
+	        }
+	      }
+
+	      // if (JSON.stringify(this.props.items) !== JSON.stringify(nextProps.items)) {
+	      if (flag) {
 	        this.loadItems(nextProps);
 	      }
 	    }
@@ -164,6 +177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var props = arguments.length <= 0 || arguments[0] === undefined ? this.props : arguments[0];
 
+	      if (this.props.debug) console.debug('Load items', props.items);
 	      var promises = props.items.map(function (item, i) {
 	        return _this2.loadItem(item, i).then(_this2.addMedia.bind(_this2)).then(_this2.setContainerWidth.bind(_this2));
 	      });
